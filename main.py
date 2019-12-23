@@ -36,13 +36,19 @@ class CoolImg:
             random_blue = random.randint(0, 256)
             random_green = random.randint(0, 256)
 
-            random_x = (random.randint(0, 9) * size)
-            random_y = (random.randint(0, 9) * size)
+            rgb = (random_red, random_green, random_blue)
+
+            square_width = self.x / size
+            maxi = size*square_width - square_width
+
+            random_x = (random.randint(0, (size - 1)) * square_width)
+           
+            random_y = (random.randint(0, (size - 1)) * square_width)
             
 
            
 
-            self.draw.rectangle([(random_x, random_y), (random_x + (size-1), random_y + (size-1))], fill=(random_red, random_green, random_blue), outline=None, width=0)
+            self.draw.rectangle([(random_x, random_y), (random_x + (square_width-1), random_y + (square_width-1))], fill=rgb, outline=None, width=0)
 
 
 
@@ -126,5 +132,5 @@ class CoolImg:
 
 
 img = CoolImg(500, 500, 'pink')
-img.xSym(10, 9, 'black')
+img.create(50, 10)
 img.show()
