@@ -83,7 +83,39 @@ class CoolImg:
             self.draw.rectangle([(random_x, random_y), (random_x + (square_width-1), random_y + (square_width-1))], fill=rgb, outline=None, width=0)
             self.draw.rectangle([(maxi - random_x, random_y), (maxi - random_x + (square_width-1), random_y + (square_width-1))], fill=rgb, outline=None, width=0)
 
+    def xSym(self, number, size, color=None): 
+
+        square_width = self.x / size
+        print(square_width)
+        symetry = []
+        maxi = size*square_width - square_width
+        
+        
+        for i in range(number + 1):
+            random_red = random.randint(0, 256)
+            random_blue = random.randint(0, 256)
+            random_green = random.randint(0, 256)
+
+            if color == None:
+                rgb = (random_red, random_green, random_blue)
+            else:
+                rgb = color
+
+         
+
+            random_x = (random.randint(0, (size - 1)) * square_width)
+           
             
+            random_y = (random.randint(0, (int(size / 2))) * square_width)
+
+            symetry.append((random_x, random_y))
+
+            print(symetry)
+
+        
+    
+            self.draw.rectangle([(random_x, random_y), (random_x + (square_width-1), random_y + (square_width-1))], fill=rgb, outline=None, width=0)
+            self.draw.rectangle([(random_x, maxi - random_y), (random_x + (square_width-1), maxi -  random_y + (square_width-1))], fill=rgb, outline=None, width=0)
 
 
     def show(self):
@@ -94,5 +126,5 @@ class CoolImg:
 
 
 img = CoolImg(500, 500, 'pink')
-img.ySym(100, 10, 'black')
+img.xSym(10, 9, 'black')
 img.show()
