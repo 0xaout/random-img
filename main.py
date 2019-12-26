@@ -9,6 +9,7 @@ class CoolImg:
         self.img = Image.new('RGB', (x, y), color=bg_color)
         self.draw = ImageDraw.Draw(self.img)
         self.x = x
+        self.symetry = []
 
 
     # création d'une image avec un nombre de carré aléatoire et de couleurs aléatoires
@@ -42,8 +43,6 @@ class CoolImg:
 
     # générer une image avec une symetrie verticale
     def ySym(self, number, size, color=None): 
-
-        symetry = []
         square_width = self.x / size
         maxi = size*square_width - square_width
              
@@ -60,7 +59,7 @@ class CoolImg:
             random_x = (random.randint(0, (int(size / 2))) * square_width)
             random_y = (random.randint(0, (size - 1)) * square_width)
 
-            symetry.append((random_x, random_y))
+            self.symetry.append((random_x, random_y))
     
             self.draw.rectangle([(random_x, random_y), (random_x + (square_width-1), random_y + (square_width-1))], fill=rgb, outline=None, width=0)
 
@@ -78,7 +77,7 @@ class CoolImg:
     # générer une image avec une symetrie horizontale
     def xSym(self, number, size, color=None): 
 
-        symetry = []
+       
         square_width = self.x / size
         maxi = size*square_width - square_width
         
@@ -95,7 +94,7 @@ class CoolImg:
             random_x = (random.randint(0, (size - 1)) * square_width)
             random_y = (random.randint(0, (int(size / 2))) * square_width)
 
-            symetry.append((random_x, random_y))
+            self.symetry.append((random_x, random_y))
 
             self.draw.rectangle([(random_x, random_y), (random_x + (square_width-1), random_y + (square_width-1))], fill=rgb, outline=None, width=0)
 
